@@ -12,12 +12,12 @@
 		<div ng-controller='mainCtrl as main'>
 			<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-6">
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="autocomplete" type="text" class="form-control input-sm" placeholder="Додати нотатку" ng-model='main.test' /> 
+							<input id="autocomplete" type="text" class="form-control input-sm" placeholder="Найти місто"/> 
                            <span class="input-group-btn">
-                            	<button class="btn btn-warning btn-sm" id="btn-chat" ng-click='main.saveNote()'>Зберегти</button>
+                            	<button class="btn btn-warning btn-sm" id="btn-chat" ng-click='main.getWeather()'>Показати погоду</button>
                        	   </span> 
                        </div>
 					</div>
@@ -31,10 +31,10 @@
 								<ul class="chat">
 									<li class="left clearfix" ng-repeat='note in main.noteArray track by $index'>
                            				<span class="chat-img pull-left">
-                           				 <img src="http://placehold.it/50/55C1E7/fff&text=N" alt="User Avatar" class="img-circle" />
+                           				 <img src="http://placehold.it/50/55C1E7/fff&text={{note.symbol}}" alt="User Avatar" class="img-circle" />
                         				</span>
 										<div class="chat-body clearfix">
-											<div class="header"> <strong class="primary-font">NOTE</strong> <small class="pull-right text-muted">
+											<div class="header"> <strong class="primary-font">{{note.title}}</strong> <small class="pull-right text-muted">
                                         <span class="glyphicon glyphicon-time"></span>{{note.date}}</small> </div>
 											<p> {{note.note}} </p>
 										</div>
@@ -42,11 +42,16 @@
 								</ul>
 							</div>
 							<div class="panel-footer">
-								<div class="input-group">
-									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Додати нотатку" ng-model='main.noteText' /> <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat" ng-click='main.saveNote()'>
-                                Зберегти</button>
-                        </span> </div>
+								<form ng-submit='main.saveNote()'>
+									<div class="input-group">
+										<input id="btn-input" type="text" class="form-control input-sm" placeholder="Додати нотатку" ng-model='main.noteText' /> 
+									   <span class="input-group-btn">
+										<button class="btn btn-warning btn-sm" id="btn-chat" type='submit'>
+											Зберегти
+										</button>
+									   </span> 
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -59,11 +64,11 @@
 	<script src="node_modules/angular-resource/angular-resource.js"></script>
 	<script src="node_modules/moment/moment.js"></script>
 	<script src="app.js"></script>
+	<script src="config.js"></script>
 	<script src="controllers/main.controller.js"></script>
 	<script src="services/data.service.js"></script>
 	<script src="services/api.service.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZoQraZLd3pRfAiJLM2v3djMlFYoW4e7E&libraries=places&callback=initAutocomplete"
-        async defer></script>
+
 </body>
 
 </html>

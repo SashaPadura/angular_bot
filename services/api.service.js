@@ -1,16 +1,18 @@
-bot.service('apiService', ['dataService', '$resource','$http', function (dataService, $resource,$http) {
-
-function getWeather(){
-	$.getJSON("http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1",function(result){
-		console.log(result);
-    });
-};
-
-	getWeather();
-
-return {
-	getWeather : getWeather
-}
+bot.service('apiService', ['dataService', '$resource', '$http', function (dataService, $resource, $http) {
 	
 	
+	function getWeather(data) {
+		return $resource("https://api.openweathermap.org/data/2.5/weather?lat="+data.lat+"&lon="+data.lon+"&APPID=471b01dc1090574be546718f50dbd19a", {}, {
+			get: {
+				method: 'JSONP'
+			}
+		})
+	}
+	
+
+	
+	
+	return {
+		getWeather : getWeather
+	}
 }]);
