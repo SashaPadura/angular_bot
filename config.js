@@ -5,6 +5,7 @@ bot.config(function($sceDelegateProvider,$qProvider) {
     'self',
     // Allow loading from our assets domain.  Notice the difference between * and **.
     'https://api.openweathermap.org/**',
+    'https://api.fixer.io/**',
   ]);
 	
 });

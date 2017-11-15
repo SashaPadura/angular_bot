@@ -30,5 +30,17 @@ bot.controller('mainCtrl',['dataService','apiService','$location',function(dataS
 		})
 	}
 	
+	
+	vm.getRate = function(){
+		apiService.getRate().get(function(msg){
+			var base = msg.base;
+			var EUR = msg.rates.EUR;
+			var PLN = msg.rates.PLN
+			dataService.saveNote({note : 'За 1 '+base+' можна купити : '+ EUR +' EUR або '+PLN+' PLN', date : moment().format('MMMM Do YYYY, h:mm:ss a'), symbol : '$', title : 'Курс валют'});
+			getNote();
+		},function(error){
+			console.log(error);
+		})
+	}
 	getNote();
 }])

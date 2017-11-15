@@ -9,10 +9,22 @@ bot.service('apiService', ['dataService', '$resource', '$http', function (dataSe
 		})
 	}
 	
+	function getRate(){
+
+		return $resource("https://api.fixer.io/latest?base=USD", {}, {
+			get: {
+				method: 'JSONP'
+			}
+		})
+	}
+	
+	
+	
 
 	
 	
 	return {
-		getWeather : getWeather
+		getWeather : getWeather,
+		getRate	   : getRate
 	}
 }]);
