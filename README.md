@@ -18,7 +18,7 @@
 Бібліотеки 
  
  moment.js
- jQuery
+ Google Api
  Bootstrap
  
 Фреймворки 
