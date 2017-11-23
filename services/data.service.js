@@ -1,7 +1,8 @@
 bot.service('dataService', [function () {
 	var noteArray = (localStorage.getItem('note') == null) ? [] : JSON.parse(localStorage.getItem('note'));
 
-	function saveNote(note) {;
+	function saveNote(note) {
+		notifyMe(note.note);
 		noteArray[noteArray.length] = note;
 		localStorage.setItem('note', JSON.stringify(noteArray));
 	}
@@ -15,6 +16,7 @@ bot.service('dataService', [function () {
 		}
 		return note;
 	}
+	
 	
 	
 	var place;
@@ -37,6 +39,23 @@ bot.service('dataService', [function () {
 	function getPlace() {
 		return place;
 	}
+	
+	function notifyMe(message) {
+	  if (!("Notification" in window)) {
+		alert("This browser does not support desktop notification");
+	  }
+	  else if (Notification.permission === "granted") {
+		var notification = new Notification(message);
+	  }
+	  else if (Notification.permission !== 'denied') {
+		Notification.requestPermission(function (permission) {
+		  if (permission === "granted") {
+			var notification = new Notification(message);
+		  }
+		});
+	  }
+	}
+	
 	return {
 		saveNote: saveNote
 		, getNote: getNote
