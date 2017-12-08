@@ -1,12 +1,14 @@
 bot.service('dataService', [function () {
 	var noteArray = (localStorage.getItem('note') == null) ? [] : JSON.parse(localStorage.getItem('note'));
-
+	
+	/*Save note to local storage*/
 	function saveNote(note) {
 		notifyMe(note.note);
 		noteArray[noteArray.length] = note;
 		localStorage.setItem('note', JSON.stringify(noteArray));
 	}
-
+	
+	/*Get note from local storage*/
 	function getNote() {
 		var note = JSON.parse(localStorage.getItem('note'))
 		if (note != null) {
@@ -20,7 +22,7 @@ bot.service('dataService', [function () {
 	
 	
 	var place;
-	
+	/*Init google autocomplite*/
 	$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDZoQraZLd3pRfAiJLM2v3djMlFYoW4e7E&libraries=places", function (data, textStatus, jqxhr) {
 		function initAutocomplete() {
 			autocomplete = new google.maps.places.Autocomplete(
@@ -40,6 +42,7 @@ bot.service('dataService', [function () {
 		return place;
 	}
 	
+	/*Block browser notification*/
 	function notifyMe(message) {
 	  if (!("Notification" in window)) {
 		alert("This browser does not support desktop notification");
