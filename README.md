@@ -30,30 +30,30 @@ http://localhost:8080
 
 ### IDE
 
-Visual Studio Code
+* Visual Studio Code
 
 ### Технології 
  
- MVC 
+ * MVC 
  
 ### Мови 
 
- JavaScript
- HTML 
- CSS
+ * JavaScript
+ * HTML 
+ * CSS
  
 ### Бібліотеки 
  
- moment.js
- Google Api
- Bootstrap
+ * moment.js
+ * Google Api
+ * Bootstrap
  
 ### Фреймворки 
  
- AngularJS
+ * AngularJS
  
 ### API для отримання інформації 
 
-https://api.openweathermap.org/ - отримання даних про погоду 
-https://api.fixer.io/ - отримання даних про поточний курс валют 
-https://maps.googleapis.com/maps/api/js?libraries=places - отримання міст для форми автозаповлення 
+* https://api.openweathermap.org/ - отримання даних про погоду 
+* https://api.fixer.io/ - отримання даних про поточний курс валют 
+* https://maps.googleapis.com/maps/api/js?libraries=places - отримання міст для форми автозаповлення 
